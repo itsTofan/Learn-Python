@@ -58,3 +58,25 @@ def lucky_number(name):
 
 lucky_number("Karen")
 lucky_number("Bond")
+
+
+
+"""Comparing things with If Else Statement, logical operator And Or Not, Modulo"""
+print(10>1)
+print("cat" == "dog")
+#print(1 < "1") #type error
+print(1 == "1")
+
+print("Yellow" > "Cyan" and "Brown" > "Magenta")
+print(25 > 50 or 1 != 2)
+print (not 42 == "Answer")
+
+def hint_username (username):
+    if len(username) < 3:
+        print("Invalid username. Must be at lesat 3 characters long.")
+    elif len(username) > 15:
+        print("Invalid username. Must be at most 15 characters long")
+    else:
+        print("Valid username.")
+
+hint_username("Te")
