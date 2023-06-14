@@ -175,3 +175,72 @@ print(sum_positive_numbers(5)) # Should be 15
 for x in range(10):
     for y in range(x):
         print(y)
+
+#Data structure
+#String
+name = "Andry"
+color = 'blue'
+#place = "cambridge' - error
+pet = "" # empty string
+pet = "looooooooooooooooooooooooooooooong cat"
+print ("Name: " + name + ", Favorite color: " + color)
+print ("example" * 3)
+print(len(name)) #lenght of string
+#String indexing
+name = "Jaylen"
+print (name[1]) #string start from index 0
+print (name[0])
+print (name[len(name)-1])
+print (name[-1]) #print from the last char
+print (name[-2])
+#substring / slice
+color = "Orange"
+print(color[1:4])
+fruit = "Pineapple"
+print(fruit[:4]) # from index 0 to first 4 char
+print(fruit[4:]) # from index 4 to onward
+
+#create new string - string is immutable meaning cannot modified
+message = 'A kong string with a silly typo'
+#message[2] = "l" #error not support item assingment
+new_message = message[0:2] + "l" + message[3:]
+print(new_message)
+pet = "Cats & Dogs"
+print(pet.index("&"))
+print("Dragons" in pet) #to check if word dragaon in variable pet - False
+print("Cats" in pet) #True
+
+def replace_domain(email, old_domain, new_domain):
+    if "@" + old_domain in email:
+        index = email.index("@" + old_domain)
+        new_email = email[:index] + "@" + new_domain
+        return new_email
+    return email
+
+print (pet.upper())
+print (pet.lower())
+answer = 'YES'
+if answer.lower() == "yes":
+    print("User said Yes")
+
+print(" YES ".strip()) #delete white space first index and last
+print(" YES  ".lstrip()) #delete white space left
+print(" YES  ".rstrip()) #delete white space right
+print ("The number times e occurs in this string is".count("e"))
+
+#format string
+name = "Manny"
+number = len(name) * 3
+print ("Hello {}, your lucky number is {}".format(name, number))
+print("Your lucky number is {number}, {name}".format(name=name, number=len(name)*3))
+
+price = 7.500
+with_tax = price * 1.09
+print(price, with_tax)
+print("Base price: ${:.2f}. With Tax: ${:.2f}".format(price, with_tax))
+
+def to_celcius(x):
+    return (x-32)*5/9
+
+for x in range(0, 101, 10):
+    print("{:>3} F | {:>6.2f} C".format(x, to_celcius(x)))
