@@ -244,3 +244,183 @@ def to_celcius(x):
 
 for x in range(0, 101, 10):
     print("{:>3} F | {:>6.2f} C".format(x, to_celcius(x)))
+
+#data type - List - collection of data.
+#list is mutable it mean can change it value
+x = ["Now", "we", "are", "cooking!"]
+print(type(x))
+print(x)
+print(len(x))
+
+print("are" in x)
+print("is" in x)
+print(x[0])
+print(x[3])
+#print(x[4]) #error
+print(x[1:3])
+print(x[:2])
+print(x[2:])
+
+Fruits = ["Pineapple", "Banana", "Apple", "Melon"]
+Fruits.append("Kiwi")
+print(Fruits)
+Fruits.insert(0, "Orange") #insert at index 0
+print(Fruits)
+Fruits.remove("Melon")
+print(Fruits)
+#Fruits.remove("Pear") #error
+Fruits.pop(3) #remove at index 3
+print(Fruits)
+Fruits[2] = "Strawberry"
+print(Fruits)
+
+
+#Tuples is a sequence of element of any type that immutable
+#like return function, tuple can be unpack
+fullname = ('Grace', 'M', 'Hopper')
+def convert_seconds(seconds):
+    hours = seconds // 3600
+    minutes = (seconds - hours * 3600) // 60
+    remaining_seconds = seconds - hours * 3600 - minutes * 60
+    return hours, minutes, remaining_seconds
+
+result = convert_seconds(5000)
+print(type(result))
+print(result)
+hours, minutes, seconds = result
+print(hours, minutes, seconds)
+hours, minutes, seconds = convert_seconds(1000)
+print(hours, minutes, seconds)
+
+#loop over list or tuple
+animals = ["Lion", "Zebra", "Dolphin", "Monkey"]
+chars = 0
+for animal in animals:
+    chars += len(animal)
+
+print("Total characters: {}, Average lenght: {}".format(chars, chars/len(animals)))
+
+winners = ["Ashley", "Dylan", "Reese"]
+#enumerate function to tuple of each element
+for index, person in enumerate(winners):
+    print("{} {}".format(index + 1, person))
+
+def full_emails(people):
+    result = []
+    for email, name in people:
+        result.append("{} <{}>".format(name, email))
+    return result
+
+print(full_emails([("andry@example.com", "Andry Six"), ("shane@example.com","Shane Penel")]))
+
+multiples = []
+for x in range (1,11):
+    multiples.append(x*7)
+print(multiples)
+#list comprehension let us create new list based on sequences or ranges
+multiples = [x*7 for x in range(1, 11)]
+print(multiples)
+
+languages = ["Python", "Perl", "Ruby", "Go", "Java", "C"]
+lenghts = [len(language) for language in languages]
+print(lenghts)
+
+z = [x for x in range(0, 101) if x % 3 == 0]
+print(z)
+
+
+#Dictionaries - the data inside dictionaries take the form of pairs of keys and values
+x = {}
+print(type(x))
+file_counts = {"jpg":10, "txt":14, "csv":2, "py":23}
+print(file_counts)
+print(file_counts["txt"])
+print(file_counts["jpg"])
+file_counts["cfg"] = 8
+print(file_counts)
+del file_counts["cfg"]
+print(file_counts)
+
+for extension in file_counts:
+    print(extension)
+
+for ext, ammount in file_counts.items():
+    print("There are {} files with the .{} extension".format(ammount, ext))
+
+print(file_counts.keys())
+print(file_counts.values())
+for value in file_counts.values():
+    print(value)
+
+def count_letters(text):
+    result = {}
+    for letter in text:
+        if letter not in result:
+            result[letter] = 0
+        result[letter] += 1
+    return result
+
+print(count_letters("aaaaa"))
+print(count_letters("superman"))
+print(count_letters("very long string with lot of letters"))
+
+"""The email_list function receives a dictionary, which contains domain names as keys, and a list of users as values. 
+Fill in the blanks to generate a list that contains complete email addresses (e.g. diana.prince@gmail.com).
+"""
+def email_list(domains):
+    emails = []
+    for domain, users in domains.items():
+	    for user in users:
+                emails.append(user + "@" + domain)
+    return emails
+
+print(email_list({"gmail.com": ["clark.kent", "diana.prince", "peter.parker"], "yahoo.com": ["barbara.gordon", "jean.grey"], "hotmail.com": ["bruce.wayne"]}))
+
+"""The groups_per_user function receives a dictionary, which contains group names with the list of users. 
+sers can belong to multiple groups. Fill in the blanks to return a dictionary with the users as keys and a list of their groups as values. 
+"""
+def groups_per_user(group_dictionary):
+	user_groups = {}
+	# Go through group_dictionary
+	for group, users in group_dictionary.items():
+		# Now go through the users in the group
+		for user in users:
+			# Now add the group to the the list of
+			if user not in user_groups:
+				user_groups[user] = []
+			user_groups[user].append(group)
+
+# groups for this user, creating the entry
+# in the dictionary if necessary
+
+	return(user_groups)
+
+print(groups_per_user({"local": ["admin", "userA"],
+		"public":  ["admin", "userB"],
+		"administrator": ["admin"] }))
+
+""""""
+wardrobe = {'shirt': ['red', 'blue', 'white'], 'jeans': ['blue', 'black']}
+new_items = {'jeans': ['white'], 'scarf': ['yellow'], 'socks': ['black', 'brown']}
+wardrobe.update(new_items)
+print(wardrobe)
+
+"""The add_prices function returns the total price of all of the groceries in the  dictionary. 
+Fill in the blanks to complete this function.
+"""
+def add_prices(basket):
+	# Initialize the variable that will be used for the calculation
+	total = 0
+	# Iterate through the dictionary items
+	for item, price in basket.items():
+		total += price
+		# Add each price to the total calculation
+		# Hint: how do you access the values of
+		# dictionary items?
+	# Limit the return value to 2 decimal places
+	return round(total, 2)  
+
+groceries = {"bananas": 1.56, "apples": 2.50, "oranges": 0.99, "bread": 4.59, 
+	"coffee": 6.99, "milk": 3.39, "eggs": 2.98, "cheese": 5.44}
+
+print(add_prices(groceries)) # Should print 28.44
