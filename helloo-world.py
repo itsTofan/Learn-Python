@@ -424,3 +424,194 @@ groceries = {"bananas": 1.56, "apples": 2.50, "oranges": 0.99, "bread": 4.59,
 	"coffee": 6.99, "milk": 3.39, "eggs": 2.98, "cheese": 5.44}
 
 print(add_prices(groceries)) # Should print 28.44
+
+#week 4 assingment
+#1 Fill in the blank to complete the “first_character” function. This function should return 
+# the first character of any string passed in.  Complete the string operation needed in this 
+# function so that input like "Hello, World" will produce the output "H".
+
+def first_character(string):
+    # Complete the return statement using a string operation.
+    return string[0] 
+
+
+print(first_character("Hello, World")) # Should print H
+print(first_character("Python is awesome")) # Should print P
+print(first_character("Keep going")) # Should print K
+
+#2. Complete the for loop and string method needed in this function so that a function call like 
+# "alpha_length("This has 1 number in it")" will return the output "17". This function should:
+"""accept a string through the parameters of the function;
+iterate over the characters in the string;
+determine if each character is a letter 
+(counting only alphabetic characters; numbers, punctuation, and spaces should be ignored);
+increment the counter;
+return the count of letters in the string."""
+
+def alpha_length(string):
+    character = ""
+    count_alpha = 0
+    # Complete the for loop sequence to iterate over "string".
+    for char in string: 
+        # Complete the if-statement using a string method. 
+        if char.isalpha():
+            count_alpha += 1  
+    return count_alpha
+ 
+print(alpha_length("This has 1 number in it")) # Should print 17
+print(alpha_length("Thisisallletters")) # Should print 16
+print(alpha_length("This one has punctuation!")) # Should print 21
+
+"""
+3. Consider the following scenario about using Python lists: 
+A professor gave his two assistants, Aniyah and Imani, the task of keeping an attendance list of students 
+in the order they arrived in the classroom. Aniyah was the first one to note which students arrived, and then Imani took over. After class, they each entered their lists into the computer and emailed them to the professor. 
+The professor wants to combine the two lists into one and sort it in alphabetical order. 
+Complete the code by combining the two lists into one and then sorting the new list. This function should:
+accept two lists through the function’s parameters;,
+combine the two lists;
+sort the combined list in alphabetical order;
+return the new list. 
+"""
+def alphabetize_lists(list1, list2):
+  new_list = [] # Initialize a new list.
+  new_list= list1 + list2 # Combine the lists.
+  new_list.sort() # Sort the combined lists.
+  return new_list 
+
+
+Aniyahs_list = ["Jacomo", "Emma", "Uli", "Nia", "Imani"]
+Imanis_list = ["Loik", "Gabriel", "Ahmed", "Soraya"]
+
+
+print(alphabetize_lists(Aniyahs_list, Imanis_list))
+# Should print: ['Ahmed', 'Emma', 'Gabriel', 'Imani', 'Jacomo', 'Loik', 'Nia', 'Soraya', 'Uli']
+
+"""
+4.
+Question 4
+ Fill in the blank to complete the “even_numbers” function. This function should use a list
+comprehension to create a list of even numbers using a conditional if statement with the 
+modulo operator to test for numbers evenly divisible by 2. The function receives two variables 
+and should return the list of even numbers that occur between the “first” and “last” variables
+exclusively (meaning don’t modify the default behavior of the range to exclude the “end” value
+in the range). For example, even_numbers(2, 7) should return [2, 4, 6].  
+"""
+def even_numbers(first, last):
+  return [num for num in range(first, last+1) if num % 2 ==0]
+
+print(even_numbers(4, 14)) # Should print [4, 6, 8, 10, 12]
+print(even_numbers(0, 9))  # Should print [0, 2, 4, 6, 8]
+print(even_numbers(2, 7))  # Should print [2, 4, 6]
+
+"""
+5.
+Question 5
+Fill in the blanks to complete the “endangered_animals” function. 
+This function accepts a dictionary containing a list of endangered animals (keys) and
+ their remaining population (values).  For each key in the given “animal_dict” dictionary, 
+ format a string to print the name of the animal, with one animal name per line.
+"""
+def endangered_animals(animal_dict):
+    result = ""
+    # Complete the for loop to iterate through the key and value items 
+    # in the dictionary.    
+    for animal, num in animal_dict.items():
+        # Use a string method to format the required string.
+        result += "{}\n".format(animal)
+    return result
+
+
+print(endangered_animals({"Javan Rhinoceros":60, "Vaquita":10, "Mountain Gorilla":200, "Tiger":500}))
+
+# Should print:
+# Javan Rhinoceros
+# Vaquita
+# Mountain Gorilla
+# Tiger
+
+"""Question 6
+Consider the following scenario about using Python dictionaries and lists: 
+Tessa and Rick are hosting a party. Before they send out invitations, they want to add all of the people 
+they are inviting to a dictionary so they can also add how many guests each friend is bringing to the party.  
+Complete the function so that it accepts a list of people, then iterates over the list and adds all of 
+the names (elements) to the dictionary as keys with a starting value of 0. Tessa and Rick plan to update 
+these values with the number of guests their friends will bring with them to the party. Then, print the new dictionary.
+This function should:
+accept a list variable named “guest_list” through the function’s parameter;
+add the contents of the list as keys to a new, blank dictionary;
+assign each new key with the value 0;
+print the new dictionary.
+"""
+def setup_guests(guest_list):
+    # loop over the guest list and add each guest to the dictionary with
+    # an initial value of 0
+    result = {} # Initialize a new dictionary 
+    for guest in guest_list: # Iterate over the elements in the list 
+        result[guest] = 0  
+         # Add each list element to the dictionary as a key with 
+        # the starting value of 0
+    return result
+
+guests = ["Adam","Camila","David","Jamal","Charley","Titus","Raj","Noemi","Sakira","Chidi"]
+
+print(setup_guests(guests))
+# Should print {'Adam': 0, 'Camila': 0, 'David': 0, 'Jamal': 0, 
+# 'Charley': 0, 'Titus': 0, 'Raj': 0, 'Noemi': 0, 'Sakira': 0, 'Chidi': 0}
+
+"""
+7.
+Question 7
+Use a dictionary to count the frequency of numbers in the given “text” string. Only numbers should be counted. 
+Do not count blank spaces, letters, or punctuation. Complete the function so that input like "1001000111101" 
+will return a dictionary that holds the count of each number that occurs in the string  {'1': 7, '0': 6}. 
+This function should: 
+accept a string “text” variable through the function’s parameters;
+initialize an new dictionary;
+iterate over each text character to check if the character is a number’
+count the frequency of numbers in the input string, ignoring all other characters;
+populate the new dictionary with the numbers as keys, ensuring each key is unique, and 
+assign the value for each key with the count of that number;
+return the new dictionary.
+"""
+def count_numbers(text):
+  # Initialize a new dictionary.
+  dictionary = {} 
+  # Complete the for loop to iterate through each "text" character.
+  for char in text:
+    # Complete the if-statement using a string method to check if the
+    # character is a number.
+    if char.isdigit():
+      # Complete the if-statement using a logical operator to check if 
+      # the number is not already in the dictionary.
+      if char not in dictionary:
+          dictionary[char] = 0
+      dictionary[char] += 1
+           # Use a dictionary operation to add the number as a key
+           # and set the initial count value to zero.
+      # Use a dictionary operation to increment the number count value 
+      # for the existing key.
+  return dictionary
+
+print(count_numbers("1001000111101"))
+# Should be {'1': 7, '0': 6}
+
+print(count_numbers("Math is fun! 2+2=4"))
+# Should be {'2': 2, '4': 1}
+
+print(count_numbers("This is a sentence."))
+# Should be {}
+
+print(count_numbers("55 North Center Drive"))
+# Should be {'5': 2}
+
+car_makes = ["Ford", "Volkswagen", "Toyota"]
+car_makes.remove("Ford")
+print(car_makes)
+
+teacher_names = {"Math": "Aniyah Cook", "Science": "Ines Bisset", "Engineering": "Wayne Branon"}
+print(teacher_names.values())
+
+colors = ["red", "white", "blue"]
+colors.insert(2, "yellow")
+print(colors)
