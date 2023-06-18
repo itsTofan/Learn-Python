@@ -208,3 +208,62 @@ def to_seconds(hours, minutes, seconds):
 	"""return the amount of seconds in the given hours, minutes and seconds"""
 	return hours*3600+minutes*60+seconds
 help(to_seconds)
+
+
+#Inheritance 
+class Fruit:
+	def __init__(self, color, flavor):
+		self.color = color
+		self.flavor = flavor
+
+class Apple(Fruit):
+	pass
+
+class Grape(Fruit):
+	pass
+
+granny_smith = Apple("green", "tart")
+carnelian = Grape("purple", "sweet")
+print(granny_smith.flavor)
+print(carnelian.color)
+
+class Animal:
+	sound = ""
+	def __init__(self, name):
+		self.name = name
+	def speak(self):
+		print("{sound} I'm {name}! {sound}".format(name=self.name, sound=self.sound))
+
+class Piglet(Animal):
+	sound = "Oink"
+
+hamlet = Piglet ("Hamlet")
+print(hamlet.speak())
+
+class Cow(Animal):
+	sound = "Mooooo"
+
+milky = Cow("Milky White")
+print(milky.speak())
+
+#Composition - 
+class Repository:
+	def __init__(self):
+		self.packages = {}
+	def add_package(self, package):
+		self.packages[package.name] =  package
+	def total_size(self):
+		result = 0
+		for package in self.package.values():
+			results += package.size
+		return result
+	
+#module used to organize functions, classes and other data together in a structured way
+#python standard library using import
+import random
+import datetime
+print(random.randint(1,10))
+now = datetime.datetime.now()
+print(now)
+print(now.year)
+print(now + datetime.timedelta(days=28))
